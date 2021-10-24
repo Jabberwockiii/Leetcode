@@ -1,0 +1,28 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        direction = -1 
+        #negative means go downward 
+        list = [[]] * numRows
+        i = 0
+        j = 0
+        for i in range(0, len(s)):
+            if direction == -1: 
+                list[j].append(s[i])
+                j += 1
+            if direction == 1:
+                list[j].append(s[i])
+                j -= 1
+            if j == numRows:
+                direction = 1
+                j -= 2
+            if j == -1:
+                direction = -1
+                j += 2
+        
+        result = ''
+        for i in list:
+            for j in i:
+                result +=(j)
+        return list 
+        
+               
