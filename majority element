@@ -1,0 +1,19 @@
+#https://leetcode.com/problems/majority-element/submissions/
+
+class Solution:
+      def majorityElement(self, nums):
+        curr = 0
+        element = nums[0]
+        repeat = 0
+        while curr < len(nums):
+            if(nums[curr] == element):
+                repeat += 1
+            if(nums[curr] != element):
+                repeat -= 1
+            if repeat == 0:
+                element = nums[curr]
+                repeat += 1 
+            curr += 1
+        return element 
+            
+#additional requiremnet O(1)space, 
