@@ -1,0 +1,17 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        left, right, res, path = n, n, [], ''
+        self.generate(left, right, res, path)
+        return res
+    def generate(self, left, right, res, path):
+        if right < left:
+            return 
+        if left == 0 and right == 0:
+            res.append(path)
+            return 
+        if left > 0:
+            self.generate(left - 1, right, res, path + '(')
+        if right > 0:
+            self.generate(left, right - 1, res, path + ')')
+            
+     #Using DFS and a tree 
