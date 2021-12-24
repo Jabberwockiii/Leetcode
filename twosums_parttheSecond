@@ -1,0 +1,7 @@
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        indice_map = {}
+        for i,j in enumerate(numbers):
+            if (target - j) in indice_map:
+                return [indice_map[target-j], i+1]
+            indice_map[j] = i + 1 
