@@ -1,0 +1,16 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        A = [ord(i) - ord('a') for i in s1]
+        B = [ord(i) - ord('a') for i in s2]
+        target = [0] * 26
+        windows = [0] * 26
+        for i in A:
+            target[i] += 1 
+            
+        for i, j in enumerate(B):
+            windows[j] += 1 
+            if(i >= len(A)):
+                windows[B[i-len(A)]] -= 1
+            if(windows == target):
+                return True
+        return False
