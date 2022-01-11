@@ -1,0 +1,12 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        def dp(n):
+            if(len(nums) == 1):
+                return nums[0]
+            if(len(nums) == 2):
+                return max(nums[1], nums[0])
+            if n not in mem:
+                mem[n] = max(dp(n-1), dp(n-2) + nums[i])
+            return mem[n]
+        mem = {}
+        return dp(len(nums)-1)
