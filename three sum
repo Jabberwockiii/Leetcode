@@ -1,0 +1,21 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        #find x, y, z
+        k = 0
+        unique = dict()
+        res = []
+        while(k < len(nums)):
+            x = nums[k]
+            for i in range(1, len(nums)):
+                if (0 - x - nums[i]) not in unique:
+                    unique[nums[i]] = i
+                else:
+                    res.append([x, nums[i], (0 - x - nums[i])])
+                    
+            res2 = []
+            for i in res:
+                if i not in res2:
+                    res2.append(i)
+            return res2
+                
+        
