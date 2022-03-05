@@ -1,0 +1,32 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        def goodNodesHelper(self, root: TreeNode, maxVal: int) -> int:
+            if(root.left == None and root.right == None and root.val >= maxVal):
+                return 1
+            elif(root.left == None and root.right == None and root.val < maxVal):
+                return 0
+            elif(root.left != None and root.right == None):
+                if root.val >= maxVal:
+                    return 1 + goodNodesHelper(self,root.left, root.val)
+                else:
+                    return goodNodesHelper(self,root.left, maxVal)
+            elif(root.right != None and root.left == None):
+                if root.val >= maxVal:
+                    return 1 + goodNodesHelper(self,root.right, root.val)
+                else:
+                    return goodNodesHelper(self,root.right, maxVal)
+            else:
+                if root.val >= maxVal:
+                    return 1 + goodNodesHelper(self, root.left, root.val) + goodNodesHelper(self, root.right, root.val)
+                else:
+                    return goodNodesHelper(self,root.left, maxVal) + goodNodesHelper(self,root.right, maxVal) 
+        return goodNodesHelper(self, root, root.val) 
+    
+                
+        
