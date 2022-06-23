@@ -17,5 +17,7 @@ class Solution(object):
             if(nums[i] == nums[i-1] + 1):
                 continue
             else:
-                return nums[i]
-        return nums[n] + 1 
+                return nums[i-1] + 1
+        return nums[n-1] + 1 
+s = Solution()
+print(s.firstMissingPositive([2,2]))
